@@ -13,7 +13,7 @@ var pics;
 
 //Load a song and images
 function preload(){
-   song = loadSound('04 - Little Yellow Spider.mp3 ');
+   song = loadSound('04 - Little Yellow Spider.mp3');
 	
 	//load all images for mousePressed function
 	 for(var p = 0; p <7; p++) {
