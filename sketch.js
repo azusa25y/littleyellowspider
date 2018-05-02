@@ -13,16 +13,16 @@ var pics;
 
 //Load a song and images
 function preload(){
-   song = loadSound("littleyellowspider/04_-_Little_Yellow_Spider.mp3");
+   song = loadSound("04_-_Little_Yellow_Spider.mp3");
 	
 	//load all images for mousePressed function
 	 for(var p = 0; p <7; p++) {
-	  pic[p]=loadImage('littleyellowspider/pic'+ p +'.gif')
+	  pic[p]=loadImage('pic'+ p +'.gif')
 	 }
 	
-	 pink = loadImage('littleyellowspider/pinkS.gif'); //pink turtle moving with mouse
-	 rod = loadImage('littleyellowspider/Rod2.gif'); //lady on the left
-	 frame = loadImage('littleyellowspider/back3.gif');  //frame image
+	 pink = loadImage('pinkS.gif'); //pink turtle moving with mouse
+	 rod = loadImage('Rod2.gif'); //lady on the left
+	 frame = loadImage('back3.gif');  //frame image
 }
 
 function setup() {
