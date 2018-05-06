@@ -13,7 +13,7 @@ var pics;
 
 //Load a song and images
 function preload(){
-   song = loadSound('04 - Little Yellow Spider.mp3');
+   song = loadSound("04_-_Little_Yellow_Spider.mp3");
 	
 	//load all images for mousePressed function
 	 for(var p = 0; p <7; p++) {
@@ -47,16 +47,24 @@ function setup() {
 
 function draw() {
 	//gradient color background
-	var color2 = color(255,255,153);//yellow
 	var color1 = color(255,204,102);//orange
-	setGradient(0, 0, windowWidth, windowHeight, color1, color2, "Y");
+	var color2 = color(255,255,153);//yellow
+	var color3 = color(255,255,153);//blue
+	var color4 = color(255,255,102);//lightyellow
+	
+	if(song.currentTime() < 136){
+		setGradient(0, 0, windowWidth, windowHeight, color1, color2, "Y");
+	};
+	if(song.currentTime() > 136){
+		setGradient(0, 0, windowWidth, windowHeight, color3, color4, "Y");
+	};
 	
 	//waveform
 	waveform = fft.waveform();
 	drawWaveform();	
 	drawWaveform2();
 	drawWaveform3();
-  
+
 	//images bubbles
 			for (var i = bubbles.length -1; i>=0; i--){
 		 bubbles[i].display();
@@ -73,6 +81,7 @@ function draw() {
 	image(frame,0,0);
 	image(rod,0,height/3);
 	image(pink, mouseX, mouseY);
+	
 }
 
 //gradient color background
@@ -92,7 +101,12 @@ function setGradient(x, y, w, h, c1, c2, axis) {
 function drawWaveform() {
 	push();
 	noStroke();
-	fill(204,0,153,60);
+	if(song.currentTime() < 136){
+		fill(204,0,153,60);
+	};
+	if(song.currentTime() > 136){
+		fill(153,255,204,80);//green
+	};
   strokeWeight(2);
   beginShape();
 	vertex(0, height);
@@ -108,7 +122,13 @@ function drawWaveform() {
 function drawWaveform2() {
 	push();
 	noStroke();
-	fill(255,204,0,95);
+	if(song.currentTime() < 136){
+		fill(255,204,0,95);
+	};
+	if(song.currentTime() > 136){
+		//fill(255,255,153);
+		fill(255,153,153,95);
+	};
   strokeWeight(2);
   beginShape();
 	vertex(0, height);
@@ -124,7 +144,14 @@ function drawWaveform2() {
 function drawWaveform3() {
 	push();
 	noStroke();
-	fill(102,0,255,80);
+	
+	if(song.currentTime() < 136){ 
+		fill(102,0,255,80);
+	};
+	if(song.currentTime() > 136){
+		//fill(255,153,153,95);
+		fill(255,153,0,95);
+	};
   strokeWeight(2);
   beginShape();
 	vertex(0, height);
@@ -659,7 +686,7 @@ function Bubble(x,y, img){
 	//To make images moving around
 	this.speedX = random(-7,7);
 	this.speedY = random(-5,5);
-	
+
 	  this.display =  function(){
 			image(this.pics, this.x, this.y);
 		}
